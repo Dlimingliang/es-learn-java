@@ -27,7 +27,7 @@ public class EsDocumentService {
     public void testAddDocument() throws IOException {
 
         IndexResponse indexResponse = elasticsearchClient.index(indexRequest ->
-                indexRequest.index(INDEX_NAME).document(EsDocument.builder().name("lml").age(21)));
+                indexRequest.index(INDEX_NAME).document(new EsDocument("lml", 21)));
 
         log.info("== response: {}, responseStatus: {}", indexResponse, indexResponse.result());
     }
