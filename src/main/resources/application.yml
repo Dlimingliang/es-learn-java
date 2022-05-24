@@ -1,0 +1,14 @@
+server:
+  port: 8090
+
+elasticsearch:
+  schema: http
+  address: 127.0.0.1:9200
+  connectTimeout: 10000
+  socketTimeout: 15000
+  connectionRequestTimeout: 20000
+  maxConnectNum: 100
+  maxConnectPerRoute: 100
+  username: xxx
+  password: xxx
+
