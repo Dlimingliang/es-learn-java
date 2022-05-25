@@ -1,7 +1,6 @@
 package com.lml.es.controller;
 
 import com.lml.es.service.EsDocumentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +11,17 @@ import java.io.IOException;
 @RequestMapping("es-documents")
 public class EsDocumentController {
 
-    @Autowired
-    private EsDocumentService esDocumentService;
+    private final EsDocumentService esDocumentService;
+
+    public EsDocumentController(EsDocumentService esDocumentService) {
+        this.esDocumentService = esDocumentService;
+    }
+
+    @GetMapping("search")
+    public String search() throws IOException {
+        esDocumentService.testSearchDocument();
+        return "search";
+    }
 
     @GetMapping("get")
     public String get() throws IOException {
