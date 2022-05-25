@@ -25,7 +25,7 @@ public class EsDocumentService {
         SearchResponse<EsDocument> searchResponse = elasticsearchClient
                 .search(s -> s.index(INDEX_NAME).query(
                         q -> q.term(
-                                t -> t.field("name").value(v -> v.stringValue("lml"))
+                                t -> t.field("name.keyword").value(v -> v.stringValue("iPhone"))
                         )
                 ), EsDocument.class);
         for (Hit<EsDocument> hit: searchResponse.hits().hits()) {
@@ -41,7 +41,7 @@ public class EsDocumentService {
     public void testAddDocument() throws IOException {
 
         IndexResponse indexResponse = elasticsearchClient.index(indexRequest ->
-                indexRequest.index(INDEX_NAME).document(new EsDocument("lml", 21)));
+                indexRequest.index(INDEX_NAME).document(new EsDocument("iPhone", 25)));
 
         log.info("== response: {}, responseStatus: {}", indexResponse, indexResponse.result());
     }
