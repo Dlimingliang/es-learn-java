@@ -23,6 +23,12 @@ public class EsDocumentController {
         return "search";
     }
 
+    @GetMapping("multipleCondition")
+    public String multipleCondition() throws IOException {
+        esDocumentService.testMultipleCondition();
+        return "multipleCondition";
+    }
+
     @GetMapping("get")
     public String get() throws IOException {
         esDocumentService.testGetDocument();
