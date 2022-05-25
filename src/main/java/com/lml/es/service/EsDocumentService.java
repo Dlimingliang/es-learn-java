@@ -40,13 +40,13 @@ public class EsDocumentService {
 
         SearchRequest request = SearchRequest.of(searchRequest -> searchRequest.index(INDEX_NAME)
                 .from(0)
-                .size(2)
+                .size(1)
                 .sort(s -> s.field(f -> f.field("age").order(SortOrder.Desc)))
                 .query(query ->
                         query.bool(boolQuery ->
                                 boolQuery
                                         .must(must -> must.range(e -> e.field("age").gte(JsonData.of(21)).lte(JsonData.of(25))))
-                                        .mustNot(mustNot -> mustNot.term(e -> e.field("name.keyword").value(value -> value.stringValue("lml"))))
+                                        //.mustNot(mustNot -> mustNot.term(e -> e.field("name.keyword").value(value -> value.stringValue("lml"))))
                         )
                 )
         );
